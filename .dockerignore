@@ -1,0 +1,5 @@
+.hg/
+.git/
+.cache/
+.idea/
+*.md
