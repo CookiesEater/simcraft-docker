@@ -3,7 +3,7 @@
 ### Building
 
 ```
-docker pull cookieseater/simcraft
+docker build -t cookieseater/simcraft github.com/CookiesEater/simcraft-docker
 ```
 
 ### Run
