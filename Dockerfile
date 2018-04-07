@@ -8,13 +8,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     g++ \
     git \
-    cpp \
-    libssl-dev
+    libssl-dev \
+    ca-certificates
 
-RUN env GIT_SSL_NO_VERIFY=true git clone --depth 1 https://github.com/simulationcraft/simc.git
-WORKDIR simc/engine
-RUN make OPENSSL=1 optimized
+RUN git clone --depth 1 https://github.com/simulationcraft/simc.git \
+    && cd simc/engine \
+    && make OPENSSL=1 optimized
 
+WORKDIR /simc/engine
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
+
 ENTRYPOINT [ "/entrypoint.sh" ]
